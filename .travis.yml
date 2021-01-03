@@ -13,3 +13,8 @@ after-success:
   - docker build -t gvimalku/multi-nginx ./nginx
   - docker build -t gvimalku/multi-server ./server
   - docker build -t gvimalku/multi-worker ./worker
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push gvimalku/multi-client
+  - docker push gvimalku/multi-nginx
+  - docker push gvimalku/multi-server
+  - docker push gvimalku/multi-worker
